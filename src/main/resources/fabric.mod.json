@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "cleanf1",
+  "version": "${version}",
+
+  "name": "Clean F1",
+  "description": "no more text displays in F1 mode. finally clean screenshots",
+  "authors": [
+    "xleb34"
+  ],
+  "contact": {
+    "homepage": "https://github.com/xleb34/CleanF1",
+    "sources": "https://github.com/xleb34/CleanF1"
+  },
+
+  "license": "MIT",
+  "icon": "assets/cleanf1/icon.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "main": ["dev.xleb34.cleanf1.Cleanf1"]
+  },
+
+  "mixins": [
+    "cleanf1.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
