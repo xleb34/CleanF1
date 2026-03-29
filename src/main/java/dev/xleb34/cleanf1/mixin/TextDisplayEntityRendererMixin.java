@@ -1,6 +1,7 @@
 package dev.xleb34.cleanf1.mixin;
 
 import dev.xleb34.cleanf1.Cleanf1;
+import dev.xleb34.cleanf1.config.ConfigManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.entity.DisplayEntityRenderer;
@@ -27,7 +28,7 @@ public abstract class TextDisplayEntityRendererMixin {
             float tickDelta,
             CallbackInfo ci
     ) {
-        if (MinecraftClient.getInstance().options.hudHidden && Cleanf1.modEnabled) {
+        if (MinecraftClient.getInstance().options.hudHidden && ConfigManager.config.modEnabled) {
             ci.cancel();
         }
     }

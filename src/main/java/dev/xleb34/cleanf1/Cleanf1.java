@@ -1,5 +1,6 @@
 package dev.xleb34.cleanf1;
 
+import dev.xleb34.cleanf1.config.ConfigManager;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -10,7 +11,6 @@ import org.lwjgl.glfw.GLFW;
 
 public class Cleanf1 implements ClientModInitializer {
 
-    public static boolean modEnabled = true;
     private static KeyBinding toggleKey;
 
     public static final KeyBinding.Category CATEGORY =
@@ -18,6 +18,8 @@ public class Cleanf1 implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        ConfigManager.load();
+
         toggleKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.cleanf1.toggle",
                 InputUtil.Type.KEYSYM,
@@ -27,7 +29,8 @@ public class Cleanf1 implements ClientModInitializer {
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (toggleKey.wasPressed()) {
-                modEnabled = !modEnabled;
+                ConfigManager.config.modEnabled = !ConfigManager.config.modEnabled;
+                ConfigManager.save();
             }
         });
     }
