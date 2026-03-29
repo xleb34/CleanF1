@@ -1,0 +1,8 @@
+{
+  "key.category.cleanf1.cleanf1": "Clean F1",
+  "key.cleanf1.toggle": "Переключить Clean F1",
+  "cleanf1.config.title": "Настройки Clean F1",
+  "cleanf1.config.toggle": "Мод: %s",
+  "cleanf1.config.on": "ВКЛ",
+  "cleanf1.config.off": "ВЫКЛ"
+}

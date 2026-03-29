@@ -18,12 +18,17 @@
 
   "environment": "client",
   "entrypoints": {
-    "main": ["dev.xleb34.cleanf1.Cleanf1"]
+    "client": ["dev.xleb34.cleanf1.Cleanf1"],
+    "modmenu": ["dev.xleb34.cleanf1.config.ModMenu"]
   },
 
   "mixins": [
     "cleanf1.mixins.json"
   ],
+
+  "suggests": {
+    "modmenu": "*"
+  },
 
   "depends": {
     "fabricloader": ">=${loader_version}",

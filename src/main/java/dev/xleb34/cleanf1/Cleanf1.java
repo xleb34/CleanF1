@@ -1,10 +1,34 @@
 package dev.xleb34.cleanf1;
 
-import net.fabricmc.api.ModInitializer;
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.InputUtil;
+import net.minecraft.util.Identifier;
+import org.lwjgl.glfw.GLFW;
 
-public class Cleanf1 implements ModInitializer {
+public class Cleanf1 implements ClientModInitializer {
+
+    public static boolean modEnabled = true;
+    private static KeyBinding toggleKey;
+
+    public static final KeyBinding.Category CATEGORY =
+            KeyBinding.Category.create(Identifier.of("cleanf1", "cleanf1"));
 
     @Override
-    public void onInitialize() {
+    public void onInitializeClient() {
+        toggleKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.cleanf1.toggle",
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_UNKNOWN,
+                CATEGORY
+        ));
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            while (toggleKey.wasPressed()) {
+                modEnabled = !modEnabled;
+            }
+        });
     }
 }
